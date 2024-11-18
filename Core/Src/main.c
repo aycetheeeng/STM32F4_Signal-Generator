@@ -13,7 +13,7 @@
   * in the root directory of this software component.
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
-  * @author         : Ayçe Mýsýrlýlar
+  * @author         : AyÃ§e MÃ½sÃ½rlÃ½lar
   * @date           : 09.11.2024
   * @version        : 1.1
   *
@@ -98,13 +98,13 @@ uint16_t sinewave[100] = {0, 4, 16, 36, 64, 100, 144, 195, 253, 319,
                         1415, 1294, 1176, 1061, 950, 844, 742, 646, 555, 470,
                         391, 319, 253, 195, 144, 100, 64, 36, 16, 4};
 uint16_t squarewave[100] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-	                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-	                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4095, 4095, 4095, 4095,
-														4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
-														4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
-														4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
-														4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
-														4095, 4095, 4095, 4095, 0, 0};
+	                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4095, 4095, 4095, 4095,
+			    4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
+			    4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
+			    4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
+			    4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 4095, 
+			    4095, 4095, 4095, 4095, 0, 0};
 
 uint16_t *waveforms[] = {sawtooth, triangle, sinewave, squarewave};
 uint8_t num_waveforms = sizeof(waveforms) / sizeof(waveforms[0]);
@@ -153,7 +153,7 @@ int main(void)
   HAL_TIM_Base_Start(&htim2);
 	
 	uint8_t current_wave_type = 0;   
-	uint8_t last_button_state = GPIO_PIN_RESET;  // butonun önceki durumu 
+	uint8_t last_button_state = GPIO_PIN_RESET;  // butonun Ã¶nceki durumu 
 														
   /* USER CODE END 2 */
 
@@ -192,13 +192,13 @@ int main(void)
 		// Genligi (amplitude) ayarla
 		uint16_t amplitude = (adc_value_amp / 4095.0) * 4095;  // 0-4095 arasinda genlik
 
-    // dalgayi dac a gönder
+    // dalgayi dac a gÃ¶nder
 	switch (current_wave_type) 
 	{
     case SineWave:
         for (uint8_t i = 0; i < 100; i++) 
 				{
-            uint16_t scaled_value = (sinewave[i] * amplitude) / 4095;  // genlik ile ölçeklendir
+            uint16_t scaled_value = (sinewave[i] * amplitude) / 4095;  // genlik ile Ã¶lÃ§eklendir
             HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, scaled_value);
             microDelay(delay_time); // pota bagli gecikme (frekans)
         }
@@ -207,7 +207,7 @@ int main(void)
     case Sawtooth:
         for (uint8_t i = 0; i < 100; i++) 
 				{
-            uint16_t scaled_value = (sawtooth[i] * amplitude) / 4095;  // genlik ile ölçeklendir
+            uint16_t scaled_value = (sawtooth[i] * amplitude) / 4095;  // genlik ile Ã¶lÃ§eklendir
             HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, scaled_value);
             microDelay(delay_time); // pota bagli gecikme (frekans)
         }
@@ -216,7 +216,7 @@ int main(void)
     case Triangle:
         for (uint8_t i = 0; i < 100; i++) 
 				{
-            uint16_t scaled_value = (triangle[i] * amplitude) / 4095;  // genlik ile ölçeklendir
+            uint16_t scaled_value = (triangle[i] * amplitude) / 4095;  // genlik ile Ã¶lÃ§eklendir
             HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, scaled_value);
             microDelay(delay_time); // pota bagli gecikme (frekans)
         }
@@ -225,7 +225,7 @@ int main(void)
     case Square:
         for (uint8_t i = 0; i < 100; i++) 
 				{
-            uint16_t scaled_value = (squarewave[i] * amplitude) / 4095;  // genlik ile ölçeklendir
+            uint16_t scaled_value = (squarewave[i] * amplitude) / 4095;  // genlik ile Ã¶lÃ§eklendir
             HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, scaled_value);
             microDelay(delay_time); // pota bagli gecikme (frekans)
         }
