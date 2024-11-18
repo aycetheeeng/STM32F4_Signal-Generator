@@ -149,11 +149,11 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-	HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
+  HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
   HAL_TIM_Base_Start(&htim2);
 	
-	uint8_t current_wave_type = 0;   
-	uint8_t last_button_state = GPIO_PIN_RESET;  // butonun önceki durumu 
+  uint8_t current_wave_type = 0;   
+  uint8_t last_button_state = GPIO_PIN_RESET;  // butonun önceki durumu 
 														
   /* USER CODE END 2 */
 
